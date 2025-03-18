@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Modules\{{TYPE}}\{{MODULE}}\Models;
+
+use App\Modules\Base\Models\BaseModel;
+
+class {{MODULE}} extends BaseModel
+{
+    protected $fillable = [
+        'name',
+        'is_active'
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean'
+    ];
+} 

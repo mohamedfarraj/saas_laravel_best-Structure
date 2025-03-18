@@ -1,0 +1,80 @@
+<?php
+
+namespace App\Modules\{{TYPE}}\{{MODULE}}\Controllers;
+
+use App\Modules\Base\Controllers\BaseController;
+use App\Modules\{{TYPE}}\{{MODULE}}\Services\{{MODULE}}Service;
+use App\Modules\{{TYPE}}\{{MODULE}}\Requests\Store{{MODULE}}Request;
+use App\Modules\{{TYPE}}\{{MODULE}}\Requests\Update{{MODULE}}Request;
+use App\Modules\{{TYPE}}\{{MODULE}}\Resources\{{MODULE}}Resource;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class {{MODULE}}Controller extends BaseController
+{
+    public function __construct({{MODULE}}Service $service)
+    {
+        $this->service = $service;
+    }
+
+    /**
+     * Get all records
+     *
+     * @return JsonResponse
+     */
+    public function index(): JsonResponse
+    {
+        $data = {{MODULE}}Resource::collection($this->service->all());
+        return $this->respondWithSuccess($data);
+    }
+
+    /**
+     * Get single record
+     *
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function show($id): JsonResponse
+    {
+        $data = new {{MODULE}}Resource($this->service->find($id));
+        return $this->respondWithSuccess($data);
+    }
+
+    /**
+     * Create new record
+     *
+     * @param Store{{MODULE}}Request $request
+     * @return JsonResponse
+     */
+    public function store(Store{{MODULE}}Request $request): JsonResponse
+    {
+        $data = new {{MODULE}}Resource($this->service->create($request->validated()));
+        return $this->respondWithSuccess($data, '{{MODULE}} created successfully');
+    }
+
+    /**
+     * Update record
+     *
+     * @param Update{{MODULE}}Request $request
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function update(Update{{MODULE}}Request $request, $id): JsonResponse
+    {
+        $data = new {{MODULE}}Resource($this->service->update($id, $request->validated()));
+        return $this->respondWithSuccess($data, '{{MODULE}} updated successfully');
+    }
+
+    /**
+     * Delete record
+     *
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function destroy($id): JsonResponse
+    {
+        $this->service->delete($id);
+        return $this->respondWithSuccess(null, '{{MODULE}} deleted successfully');
+    }
+} 

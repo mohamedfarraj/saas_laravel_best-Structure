@@ -1,0 +1,6 @@
+<?php
+
+use App\Modules\{{TYPE}}\{{MODULE}}\Controllers\{{MODULE}}Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::apiResource('{{MODULE_LOWER}}', {{MODULE}}Controller::class); 

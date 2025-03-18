@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Modules\{{TYPE}}\{{MODULE}}\Models;
+
+use App\Modules\Base\Models\BaseModel;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
+
+class {{MODULE}} extends BaseModel
+{
+    use UsesTenantConnection;
+    protected $fillable = [
+        'name',
+        'is_active'
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean'
+    ];
+} 

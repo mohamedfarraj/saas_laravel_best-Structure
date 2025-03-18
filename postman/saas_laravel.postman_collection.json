@@ -1,0 +1,1361 @@
+{
+	"info": {
+		"_postman_id": "783fbf9f-f830-4049-9e87-d5a31857950a",
+		"name": "SaaS Laravel API",
+		"description": "API collection for SaaS Laravel application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7205184"
+	},
+	"item": [
+		{
+			"name": "Core",
+			"item": [
+				{
+					"name": "Authentication",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"admin@core.com\",\n    \"password\": \"password\"\n}"
+								},
+								"url": {
+									"raw": "{{port}}{{base_url}}/api/auth/login",
+									"host": [
+										"{{port}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								},
+								"description": "Login to get access token"
+							},
+							"response": []
+						},
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test User\",\n    \"email\": \"test@example.com\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\"\n}"
+								},
+								"url": {
+									"raw": "{{port}}{{base_url}}/api/auth/register",
+									"host": [
+										"{{port}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								},
+								"description": "Register a new user"
+							},
+							"response": []
+						},
+						{
+							"name": "me",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{port}}{{base_url}}/api/auth/me",
+									"host": [
+										"{{port}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"me"
+									]
+								},
+								"description": "Register a new user"
+							},
+							"response": []
+						},
+						{
+							"name": "logout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{port}}{{base_url}}/api/auth/logout",
+									"host": [
+										"{{port}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"logout"
+									]
+								},
+								"description": "Register a new user"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "List Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/core/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"core",
+										"users"
+									]
+								},
+								"description": "Get all Xxxts"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Users",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\\n    // Add your request body here\\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/core/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"core",
+										"users"
+									]
+								},
+								"description": "Create a new Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Show Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/core/Users/{{id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"core",
+										"Users",
+										"{{id}}"
+									]
+								},
+								"description": "Get a specific Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Users",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\\n    // Add your request body here\\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/core/Users/{{id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"core",
+										"Users",
+										"{{id}}"
+									]
+								},
+								"description": "Update a specific Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Users",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/core/Users/{{id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"core",
+										"Users",
+										"{{id}}"
+									]
+								},
+								"description": "Delete a specific Xxxt"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Roles",
+					"item": [
+						{
+							"name": "List Roles",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/core/roles",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"core",
+										"roles"
+									]
+								},
+								"description": "Get all Xxxts"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Roles",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\\n    // Add your request body here\\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/core/roles",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"core",
+										"roles"
+									]
+								},
+								"description": "Create a new Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Show Roles",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/core/roles/{{id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"core",
+										"roles",
+										"{{id}}"
+									]
+								},
+								"description": "Get a specific Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Roles",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\\n    // Add your request body here\\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/core/roles/{{id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"core",
+										"roles",
+										"{{id}}"
+									]
+								},
+								"description": "Update a specific Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Roles",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/core/roles/{{id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"core",
+										"roles",
+										"{{id}}"
+									]
+								},
+								"description": "Delete a specific Xxxt"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Permissions",
+					"item": [
+						{
+							"name": "List Permissions",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/core/permissions",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"core",
+										"permissions"
+									]
+								},
+								"description": "Get all Xxxts"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Permissions",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\\n    // Add your request body here\\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/core/permissions",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"core",
+										"permissions"
+									]
+								},
+								"description": "Create a new Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Show Permissions",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/core/Permissions/{{id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"core",
+										"Permissions",
+										"{{id}}"
+									]
+								},
+								"description": "Get a specific Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Permissions",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\\n    // Add your request body here\\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/core/Permissions/{{id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"core",
+										"Permissions",
+										"{{id}}"
+									]
+								},
+								"description": "Update a specific Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Permissions",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/core/Permissions/{{id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"core",
+										"Permissions",
+										"{{id}}"
+									]
+								},
+								"description": "Delete a specific Xxxt"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenant",
+			"item": [
+				{
+					"name": "Authentication",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"admin@tenant.com\",\n    \"password\": \"password\"\n}"
+								},
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/auth/login",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"auth",
+										"login"
+									]
+								},
+								"description": "Login to get access token"
+							},
+							"response": []
+						},
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test User\",\n    \"email\": \"test@example.com\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\"\n}"
+								},
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/auth/register",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"auth",
+										"register"
+									]
+								},
+								"description": "Register a new user"
+							},
+							"response": []
+						},
+						{
+							"name": "me",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/auth/me",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"auth",
+										"me"
+									]
+								},
+								"description": "Register a new user"
+							},
+							"response": []
+						},
+						{
+							"name": "logout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/auth/logout",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"auth",
+										"logout"
+									]
+								},
+								"description": "Register a new user"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "List Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/users",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"users"
+									]
+								},
+								"description": "Get all Xxxts"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Users",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\\n    // Add your request body here\\n}"
+								},
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/users",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"users"
+									]
+								},
+								"description": "Create a new Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Show Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/Users/{{id}}",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"Users",
+										"{{id}}"
+									]
+								},
+								"description": "Get a specific Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Users",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\\n    // Add your request body here\\n}"
+								},
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/Users/{{id}}",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"Users",
+										"{{id}}"
+									]
+								},
+								"description": "Update a specific Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Users",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/Users/{{id}}",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"Users",
+										"{{id}}"
+									]
+								},
+								"description": "Delete a specific Xxxt"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Roles",
+					"item": [
+						{
+							"name": "List Roles",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/roles",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"roles"
+									]
+								},
+								"description": "Get all Xxxts"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Roles",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\\n    // Add your request body here\\n}"
+								},
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/roles",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"roles"
+									]
+								},
+								"description": "Create a new Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Show Roles",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/roles/{{id}}",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"roles",
+										"{{id}}"
+									]
+								},
+								"description": "Get a specific Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Roles",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\\n    // Add your request body here\\n}"
+								},
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/roles/{{id}}",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"roles",
+										"{{id}}"
+									]
+								},
+								"description": "Update a specific Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Roles",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/roles/{{id}}",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"roles",
+										"{{id}}"
+									]
+								},
+								"description": "Delete a specific Xxxt"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Permissions",
+					"item": [
+						{
+							"name": "List Permissions",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/permissions",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"permissions"
+									]
+								},
+								"description": "Get all Xxxts"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Permissions",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\\n    // Add your request body here\\n}"
+								},
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/permissions",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"permissions"
+									]
+								},
+								"description": "Create a new Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Show Permissions",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/Permissions/{{id}}",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"Permissions",
+										"{{id}}"
+									]
+								},
+								"description": "Get a specific Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Permissions",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\\n    // Add your request body here\\n}"
+								},
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/Permissions/{{id}}",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"Permissions",
+										"{{id}}"
+									]
+								},
+								"description": "Update a specific Xxxt"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Permissions",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{port}}{{tenant}}{{base_url}}/api/tenant/Permissions/{{id}}",
+									"host": [
+										"{{port}}{{tenant}}{{base_url}}"
+									],
+									"path": [
+										"api",
+										"tenant",
+										"Permissions",
+										"{{id}}"
+									]
+								},
+								"description": "Delete a specific Xxxt"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "port",
+			"value": "http://",
+			"type": "string"
+		},
+		{
+			"key": "base_url",
+			"value": "localhost:80"
+		},
+		{
+			"key": "tenant",
+			"value": "test",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}

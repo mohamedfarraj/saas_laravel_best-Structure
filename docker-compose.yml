@@ -1,0 +1,61 @@
+name: trases_app
+services:
+  web:
+    image: php:8.3-cli
+    container_name: trases_app
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    env_file:
+      - .env
+    working_dir: /var/www/html
+    command: >
+      bash -c "
+        apt-get update && \
+        apt-get install -y libzip-dev unzip git default-mysql-client curl && \
+        curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+        apt-get install -y nodejs && \
+        docker-php-ext-install zip pdo pdo_mysql && \
+        curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
+        chmod 777 -R /var/www/html/storage && \
+        composer install && \
+        chmod 777 -R /var/www/html/bootstrap/cache && \
+        npm install && \
+        npm run build && \
+        php artisan serve --host=0.0.0.0 --port=80
+      "
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: landlord
+      MYSQL_USER: user
+      MYSQL_PASSWORD: rootpassword
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  phpmyadmin:
+    image: phpmyadmin
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "6060:80"
+    depends_on:
+      - db
+
+volumes:
+  db_data:
